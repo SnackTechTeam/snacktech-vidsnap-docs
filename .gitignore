@@ -1,0 +1,46 @@
+# Arquivos gerados por gerador de sites
+/site/
+/build/
+/.cache/
+/public/
+
+# Dependências
+/node_modules/
+/.venv/
+/venv/
+/__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Arquivos temporários de editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+#ambiente
+.env
+.env.local
+.env.*.local
+
+#log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#cache
+.cache/
+.sass-cache/
+.npm/
+.eslintcache
+
+#documentação que não precisa versionar
+/temp/
+/drafts/
+/rascunhos/
