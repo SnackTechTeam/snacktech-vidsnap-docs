@@ -9,10 +9,10 @@ Video com a descrição do trabalho desenvolvido
 
 ## Repositório relacionados
 
-[Infraestrutura](https://github.com/SnackTechTeam/snapvid-infra)
-[API e Worker Status de Vídeos](https://github.com/SnackTechTeam/snacktech-vidsnap-api)
-[Worker Processamento de Vídeo](https://github.com/SnackTechTeam/snacktech-vidsnap-worker-video)
-[Serviço de Notificação](https://github.com/SnackTechTeam/snacktech-vidsnap-lambda-notification)
+- [Infraestrutura](https://github.com/SnackTechTeam/snapvid-infra)
+- [API e Worker Status de Vídeos](https://github.com/SnackTechTeam/snacktech-vidsnap-api)
+- [Worker Processamento de Vídeo](https://github.com/SnackTechTeam/snacktech-vidsnap-worker-video)
+- [Serviço de Notificação](https://github.com/SnackTechTeam/snacktech-vidsnap-lambda-notification)
 
 ## Como contribuir com a documentação
 
