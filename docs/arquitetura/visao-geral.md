@@ -1,6 +1,4 @@
-# Vidsnap
-
-## Descrição
+# Descrição Geral
 
 Vidsnap é um sistema de processamento de vídeos e imagens, com foco em produzir imagens a partir dos vídeos enviados pelos usuários. 
 
@@ -55,3 +53,13 @@ O notificador permite avisar os usuários de forma assíncrona (ou seja, o usuá
 - **Segurança**: Sistema possui fluxo dedicado para autenticação e autorização de operações
 
 Com esses pontos é possível o sistema processar grandes volumes de requisições e mídias, com segurança e notificação em tempo "real" sobre o status de cada operação.
+
+## Processos
+- [Fluxo de Autenticação e Autorização](../processos/fluxos-principais/fluxo-autenticacao.md)
+- [Fluxo de Envio de Vídeo](../processos/fluxos-principais/fluxo-envio-video.md)
+- [Fluxo de Processamento de Vídeo](../processos/fluxos-principais/fluxo-processamento-video)
+- [Fluxo de notificação após processamento de vídeo](../processos/fluxos-principais/fluxo-notificacao-processo-video.md)
+- [Fluxo de Auto-Scaling](../processos/fluxos-principais/fluxo-auto-scaling.md)
+
+## Diagrama de Resumo
+<img src="diagramas/fluxo-geral/fluxo geral.png"/>

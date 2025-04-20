@@ -1,6 +1,7 @@
 # Fluxo de Processamento de Vídeo
 
 Quando o vídeo é armazenado no S3, o próprio serviço gera um evento que cai numa fila SQS. o Worker de Processamento consome essa mensagem e a partir dela faz o processamento do vídeo.
+[Repositório do Worker de Processamento de Vídeo](https://github.com/SnackTechTeam/snacktech-vidsnap-worker-video)
 
 Esse processamento envolve os seguintes passos:
 
@@ -12,9 +13,9 @@ Esse processamento envolve os seguintes passos:
 - Fazer o upload do arquivo zip e da primeira imagem gerada, no mesmo local onde está o vídeo no S3
 - Limpar arquivos do Worker, deletar vídeos, imagens e zip para liberar recurso.
 - Notificar que o vídeo foi processado com sucesso
-- Fazer o commit da mensagem que foi consumida pelo Worker
+- Fazer o commit/remoção da mensagem que foi consumida pelo Worker
 
-Há tambem o processo alternativo onde se algum dos passos acima falharem, ao invés de ser notificado o sucesso do processamento do vídeo, será notificado que ele foi processado com falha.
+Há também o processo alternativo onde se algum dos passos acima falharem, ao invés de ser notificado o sucesso do processamento do vídeo, será notificado que ele foi processado com falha.
 
 ## Validar que o evento se trata de um arquivo válido para processamento
 
