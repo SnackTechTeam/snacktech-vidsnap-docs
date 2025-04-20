@@ -12,9 +12,9 @@ Esse processamento envolve os seguintes passos:
 - Fazer o upload do arquivo zip e da primeira imagem gerada, no mesmo local onde está o vídeo no S3
 - Limpar arquivos do Worker, deletar vídeos, imagens e zip para liberar recurso.
 - Notificar que o vídeo foi processado com sucesso
-- Fazer o commit da mensagem que foi consumida pelo Worker
+- Fazer o commit/remoção da mensagem que foi consumida pelo Worker
 
-Há tambem o processo alternativo onde se algum dos passos acima falharem, ao invés de ser notificado o sucesso do processamento do vídeo, será notificado que ele foi processado com falha.
+Há também o processo alternativo onde se algum dos passos acima falharem, ao invés de ser notificado o sucesso do processamento do vídeo, será notificado que ele foi processado com falha.
 
 ## Validar que o evento se trata de um arquivo válido para processamento
 
