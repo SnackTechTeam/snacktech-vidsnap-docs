@@ -10,19 +10,19 @@ Nas duas redes privadas serão hospedados os nodes do EKS e as instâncias de RD
 As redes públicas destinam-se a futuros recursos e não são utilizadas para o escopo do que foi desenvolvido e descrito aqui. 
 
 ### EKS
-O recurso principal da infraestrutura é o cluster EKS (Elastic Kubernetes Service). O cluster possui capacidade de escalabilidade automatica partindo do mínimo de 1 node e aumentando até o limite configurado. 
-O acesso aos PODs dentro do EKS é restrito apenas a trafego originado na VPC e nas portas usadas pelos PODs. Isso é atingido através do uso de Security Groups e pelo uso de subredes privadas. Com isso garantimos o requisito de liberar apenas o mínimo necessário para o funcionamento do sistema.
+O recurso principal da infraestrutura é o cluster EKS (Elastic Kubernetes Service). O cluster possui capacidade de escalabilidade automática partindo do mínimo de 1 node e aumentando até um limite configurável. 
+O acesso aos PODs dentro do EKS é restrito apenas a tráfego originado na VPC e destinado as portas usadas pelos PODs. Isso é atingido através do uso de Security Groups e pelo uso de subredes privadas. Com isso garantimos o requísito de liberar apenas o mínimo necessário para o funcionamento do sistema.
 
 ### RDS
-Para o armazenamento de dados da aplicação é provisionada uma instancia de banco no serviço RDS (Relacional Database Service). Através do RDS conseguimos delegar a complexidade da gestão dos detalhes do serviço e focar na gestão dos dados.
-O tamanho e caracteristicas da instância são configuraveis para se adequar ao volume de demanda previsto para a aplicação. 
-Quanto a segurança, a instância tem seu acesso restrito apenas para trafego originado na VPC (através de security groups). Além disso, ela é provisionada nas redes privadas, ficando assim inacessivel a partir da rede externa. 
+Para o armazenamento de dados da aplicação é provisionada uma instância de banco no serviço RDS (Relacional Database Service). Através do RDS conseguimos delegar a complexidade da gestão dos detalhes do serviço e focar na gestão dos dados.
+O tamanho e caracteristicas da instância são configuráveis para se adequar ao volume de demanda previsto para a aplicação. 
+Quanto a segurança, a instância tem seu acesso restrito apenas para tráfego originado na VPC (através de security groups). Além disso, ela é provisionada nas redes privadas, ficando assim inacessível a partir da rede externa. 
 
 ### ECR
 São provisionados ECRs (Elastic Container Registry) para hospedagem das imagens dos diversos componentes da aplicação.
 
 ### SQS
-Para operacionalização da mensageria da aplicação é utilizado o serviço SQS (Simple Queue Service). As filas utilizam o padrão DLQ (Dead Letter Queue), onde mensagens que sofrem falha de processamento são armazenadas numa fila a parte para posterior analise e tratamento.
+Para operacionalização da mensageria da aplicação é utilizado o serviço SQS (Simple Queue Service). As filas utilizam o padrão DLQ (Dead Letter Queue), onde mensagens que sofrem falha de processamento são armazenadas numa fila a parte para posterior análise e tratamento.
 São 3 filas onde cada uma destina-se a um fluxo de comunicação:
 - Recepção de novo vídeo: Fila alimentada pelo serviço S3 e consumida pelo worker que processa os videos recebidos.
 - Atualização de status de vídeo: Fila alimentada pelo worker de processamento e consumida pelo worker de atualização de status.
@@ -31,12 +31,12 @@ São 3 filas onde cada uma destina-se a um fluxo de comunicação:
 ### S3
 Para armazenamento dos vídeos e dos arquivos resultantes do processamento, é provisionado um bucket no serviço S3 (Simple Storage Service).
 Os arquivos desse backet são privados e só podem ser manipulados por meio do console da AWS ou por meio de URLs assinadas. 
-Também é configurável o tempo que os videos e demais arquivos ficaram armazenados. Para os testes do prototipo esse tempo foi configurado para 1 dia, como forma de evitar consumo excessivo dos créditos da conta LAB.
+Também é configurável o tempo que os videos e demais arquivos ficaram armazenados. Para os testes do protótipo esse tempo foi configurado para 1 dia, como forma de evitar consumo excessivo dos créditos da conta LAB.
 
 ### API Gateway
-Com a API protegida nas redes privadas da VPC, é através do API Gateway que todos os acessos a ela devem passar.
+Com a API protegida nas redes privadas da VPC, todos os acessos a ela devem passar pelo API Gateway.
 As requisições são encaminhadas para a API através de um VPC Link criado entre o API Gateway e um Load Balancer interno instanciado dentro do EKS. Esse load balancer é responsável por distribuir as requisições entre as diversas instâncias da API.
 Para proteger a API contra acessos de usuários não cadastrados, o gateway se utiliza de uma autorização customizada. Esse processo é realizado pela função lambda que além de autorizar o acesso, retorna o ID e o e-mail do usuário. Esses dados são, por sua vez, adicionados aos headers da requisição para que sejam usados na API para identificar o usuário e restrigir o escopo dos arquivos manipuláveis por ele.  
 
 ### Cognito e Autenticação
-A função lambda usada pelo API Gateway assume a função de autorização e autenticação de usuários. Para isso ela se utiliza do serviço AWS Cognito. Através dele o gerenciamento de usuário é delegado trazendo mais segurança a guarda das credenciais e validação destas por meio do processo OAuth2. 
+A função lambda usada pelo API Gateway realiza autorização e autenticação de usuários. Para isso ela se utiliza do serviço AWS Cognito. Através dele o gerenciamento de usuário é delegado trazendo mais segurança a guarda das credenciais e validação destas por meio do processo OAuth2. 

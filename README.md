@@ -7,7 +7,7 @@ Video com a descrição do trabalho desenvolvido
 - [Visão geral do projeto](docs/arquitetura/visao-geral.md)
 - [Infraestrutura da aplicação](docs/arquitetura/infra.md)
 
-## Repositório relacionados
+## Repositórios relacionados
 
 - [Infraestrutura](https://github.com/SnackTechTeam/snapvid-infra)
 - [API e Worker Status de Vídeos](https://github.com/SnackTechTeam/snacktech-vidsnap-api)
