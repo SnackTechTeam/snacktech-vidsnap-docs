@@ -1,6 +1,7 @@
 # Fluxo de Processamento de Vídeo
 
 Quando o vídeo é armazenado no S3, o próprio serviço gera um evento que cai numa fila SQS. o Worker de Processamento consome essa mensagem e a partir dela faz o processamento do vídeo.
+[Repositório do Worker de Processamento de Vídeo](https://github.com/SnackTechTeam/snacktech-vidsnap-worker-video)
 
 Esse processamento envolve os seguintes passos:
 
