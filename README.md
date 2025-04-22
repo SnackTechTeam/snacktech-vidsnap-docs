@@ -2,7 +2,7 @@
 Repositório focado em armazenar toda a documentação sobre o que envolve a aplicação Vidsnap. Seus repositórios, regras, definições, etc.
 
 Video com a descrição do trabalho desenvolvido
-(Apresentação)[https://www.youtube.com/]
+[Vídeo de Apresentação](https://www.youtube.com/watch?v=taFV9VdW6Mw)
 
 - [Visão geral do projeto](docs/arquitetura/visao-geral.md)
 - [Infraestrutura da aplicação](docs/arquitetura/infra.md)
